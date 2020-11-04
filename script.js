@@ -1,6 +1,6 @@
 function returnCard(img) {
-    return `
-    <div class="col-md-4">
+    return 
+    `<div class="col-md-4">
               <div class="card mb-4 shadow-sm">
                 <svg
                   class="bd-placeholder-img card-img-top"
@@ -57,10 +57,10 @@ function returnCard(img) {
     let imgCards = document.getElementsByClassName("img-card");
 
     cardsRow.innerHTML = '';
-    imgCards.forEach(card => {
-        cardsRow.innerHTML += returnCard(card);
-    })
-
+    // imgCards.forEach(card => {
+    //     cardsRow.innerHTML += returnCard(card);
+    // })
+    cardsRow.innerHTML += returnCard()
   };
 
 window.onload = function(){
@@ -78,8 +78,6 @@ window.onload = function(){
         .catch( error =>
           console.log(error));
 
-    
     const btn = document.getElementById("loadImgs");
     btn.onclick = createCards;
 }
-
