@@ -1,6 +1,7 @@
 const loadImages = () =>{
   let loadImagesBtn = document.querySelector('#loadImagesBtn');
   let imgsDiv = document.querySelectorAll('img');
+  let imgIdDiv = document.querySelectorAll('.img-id');
   loadImagesBtn.onclick = function(){
       console.log('button clickeddddddddddddddd');
       fetch("http://www.splashbase.co/api/v1/images/search?query=sun", {
@@ -10,6 +11,7 @@ const loadImages = () =>{
           .then(apiResponse =>{
 
               for(let i=0; i<imgsDiv.length; i++){
+                  imgIdDiv[i].innerText = apiResponse.images[i].id;
                   imgsDiv[i].src = apiResponse.images[i].url;
               }
 
@@ -22,6 +24,7 @@ const loadImages = () =>{
 const loadImages2 = () =>{
   let loadImagesBtn2 = document.querySelector('#loadImagesBtn2');
   let imgsDiv = document.querySelectorAll('img');
+  let imgIdDiv = document.querySelectorAll('.img-id');
   loadImagesBtn2.onclick = function(){
       console.log('button clickeddddddddddddddd');
       fetch("http://www.splashbase.co/api/v1/images/search?query=snow", {
@@ -31,6 +34,7 @@ const loadImages2 = () =>{
           .then(apiResponse =>{
 
               for(let i=0; i<imgsDiv.length; i++){
+                  imgIdDiv[i].innerText = apiResponse.images[i].id;
                   imgsDiv[i].src = apiResponse.images[i].url;
               }
 
