@@ -72,10 +72,20 @@ const addModal = () =>{
       }
   }
 }
+const search = () =>{
+  let searchInput = document.querySelector('#search');
+  let query = searchInput.value;
+  if(query){
+    console.log('query::::::::', query);
+  }
+  
+
+}
 window.onload = function(){
   loadImages();
   loadImages2();
   addModal();
+  search();
 }
 // http://www.splashbase.co/api/v1/images/search?query=your query
 // http://www.splashbase.co/api/v1/images/search?query=your secondary query
