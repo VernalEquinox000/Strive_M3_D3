@@ -21,7 +21,7 @@ const loadImages = () =>{
           });
   }
 }
-const loadImages2 = () =>{
+/* const loadImages2 = () =>{
   let loadImagesBtn2 = document.querySelector('#loadImagesBtn2');
   let imgsDiv = document.querySelectorAll('img');
   let imgIdDiv = document.querySelectorAll('.img-id');
@@ -43,7 +43,7 @@ const loadImages2 = () =>{
               console.error('!!!!!!!!!!!!!!!!!!!! ', err);
           });
   }
-}
+} */
 const addModal = () =>{
   let btn = document.getElementsByClassName("view-btn"); 
   let modalBody = document.querySelector('.modal-body');
@@ -72,18 +72,91 @@ const addModal = () =>{
       }
   }
 }
-const search = () =>{
+const search = () => {
   let searchInput = document.querySelector('#search');
-  let query = searchInput.value;
-  if(query){
-    console.log('query::::::::', query);
+  
+  /* if (searchInput.value) { */
+    let loadImagesBtn2 = document.querySelector('#loadImagesBtn2');
+    let imgsDiv = document.querySelectorAll('img');
+    let imgIdDiv = document.querySelectorAll('.img-id');
+    loadImagesBtn2.onclick = function () {
+      console.log('button clickeddddddddddddddd');
+      fetch(`http://www.splashbase.co/api/v1/images/search?query=${searchInput.value}`, {
+        "method": "GET",
+      })
+        .then(response => response.json())
+        .then(apiResponse => {
+          console.log(apiResponse)
+
+          for (let i = 0; i < imgsDiv.length; i++) {
+            imgIdDiv[i].innerText = apiResponse.images[i].id;
+            imgsDiv[i].src = apiResponse.images[i].url;
+          }
+
+        })
+        .catch(err => {
+          console.error('!!!!!!!!!!!!!!!!!!!! ', err);
+        });
+    }
+
+    
   }
+
+  /* else {
+
+    let loadImagesBtn2 = document.querySelector('#loadImagesBtn2');
+  let imgsDiv = document.querySelectorAll('img');
+  let imgIdDiv = document.querySelectorAll('.img-id');
+  loadImagesBtn2.onclick = function(){
+      console.log('button clickeddddddddddddddd');
+      fetch("http://www.splashbase.co/api/v1/images/search?query=snow", {
+          "method": "GET",
+          })
+          .then(response => response.json())
+          .then(apiResponse =>{
+
+              for(let i=0; i<imgsDiv.length; i++){
+                  imgIdDiv[i].innerText = apiResponse.images[i].id;
+                  imgsDiv[i].src = apiResponse.images[i].url;
+              }
+
+          })
+          .catch(err => {
+              console.error('!!!!!!!!!!!!!!!!!!!! ', err);
+          });
+  }
+    
+
+
+
+
+
+    
+} */
+
+
+
+
+
+
   
 
-}
+
+
+
+
+
+
+
+
+
+  
+  
+
+
 window.onload = function(){
   loadImages();
-  loadImages2();
+  /* loadImages2(); */
   addModal();
   search();
 }

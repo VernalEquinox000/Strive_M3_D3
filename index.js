@@ -17,3 +17,8 @@ const hideToggle = function () {
     }
 
 }
+
+/* window.onload = function () {
+    changeHide()
+}
+ */
